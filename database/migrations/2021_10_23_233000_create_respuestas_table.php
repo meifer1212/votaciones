@@ -17,6 +17,7 @@ class CreateRespuestasTable extends Migration
             $table->id();
             $table->unsignedBigInteger('pregunta_id');
             $table->string('respuesta',255);
+            // $table->boolean('verdadero_falso')->default('0');
             $table->timestamps();
             $table->foreign('pregunta_id')->references('id')->on('preguntas');
         });

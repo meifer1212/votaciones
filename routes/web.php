@@ -18,3 +18,5 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 Route::get('/',[HomeController::class,'index'])->name('home.index');
+Route::get('/show/{identificacion}',[HomeController::class,'show'])->name('home.show');
+Route::post('/',[HomeController::class,'store'])->name('home.store');
