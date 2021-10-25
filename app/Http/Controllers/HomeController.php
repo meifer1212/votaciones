@@ -61,11 +61,15 @@ class HomeController extends Controller
      */
     public function show($identificacion)
     {
-        $nombre = User::where('identificacion',$identificacion)->select('nombre')->first();
+        $nombre = User::where('identificacion', $identificacion)->select('nombre')->first();
+        // pequeña validacion para saber si el usuario existe o simplemente digitaron algo por la url erroneo.
+        if (!$nombre) {
+            return redirect(route('home.index'));
+        }
         $cant_respuestas = RespuestaUser::count();
         $users_votantes = $cant_respuestas / 5;
         $preguntas = Pregunta::all();
-        return view('votaciones.show', compact('users_votantes', 'identificacion', 'preguntas','nombre'));
+        return view('votaciones.show', compact('users_votantes', 'identificacion', 'preguntas', 'nombre'));
     }
 
     /**
@@ -98,9 +102,9 @@ class HomeController extends Controller
         $respuestas = $pregunta_id->respuestas;
         $api_respuestas = [];
         $cant_votantes = [];
-        foreach ($respuestas as $respuesta){
-            $api_respuestas[]=$respuesta->respuesta;
-            $cant_votantes[] = RespuestaUser::where('respuesta_id',$respuesta->id)->count();
+        foreach ($respuestas as $respuesta) {
+            $api_respuestas[] = $respuesta->respuesta;
+            $cant_votantes[] = RespuestaUser::where('respuesta_id', $respuesta->id)->count();
         }
         $data = [
             'votantes' => $users_votantes,
