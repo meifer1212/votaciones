@@ -12,7 +12,7 @@
     <header class="container__herosection">
         <div class="herosection">
             <div class="herosection__text">
-                <p>Sistema de Votaciónes.</p>
+                <p>Resultado - Votaciónes.</p>
             </div>
             <div class="herosection__illustration"></div>
         </div>
@@ -20,10 +20,8 @@
     <main role="main">
         <div class="container__encuesta">
             <form class="encuesta">
-                <div class="pregunta">
-                    <h1>Usuario {{ number_format($identificacion, '0', ',', '.') }} eres el votante #
-                        {{ number_format($users_votantes, '0', ',', '.') }}</h1>
-                </div>
+                   <h2> {{ucfirst($nombre->nombre)}}({{ number_format($identificacion, '0', ',', '.') }}) eres el votante #
+                        {{ number_format($users_votantes, '0', ',', '.') }}</h2> <br>
                 @foreach ($preguntas as $pregunta)
                     <div class="pregunta">
                         <div class="pregunta__text">
@@ -37,7 +35,7 @@
                         {{-- endgrafico --}}
                     </div>
                 @endforeach
-                <i type="submit" class="boton-enviar" href="{{route('home.index')}}">Volver</i>
+                <a type="submit" class="boton-enviar" href="{{route('home.index')}}">Volver</a>
             </form>
         </div>
     </main>

@@ -38,6 +38,7 @@ class HomeController extends Controller
             if ($user == 0) {
                 $user = new User();
                 $user->identificacion = $request->user_identificacion;
+                $user->nombre = $request->nombre;
                 $user->save();
             }
             // gurdamos los votos
@@ -60,10 +61,11 @@ class HomeController extends Controller
      */
     public function show($identificacion)
     {
+        $nombre = User::where('identificacion',$identificacion)->select('nombre')->first();
         $cant_respuestas = RespuestaUser::count();
         $users_votantes = $cant_respuestas / 5;
         $preguntas = Pregunta::all();
-        return view('votaciones.show', compact('users_votantes', 'identificacion', 'preguntas'));
+        return view('votaciones.show', compact('users_votantes', 'identificacion', 'preguntas','nombre'));
     }
 
     /**

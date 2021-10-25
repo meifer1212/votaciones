@@ -21,14 +21,21 @@
                     <label for="identificacion">identificacion</label>
                     <input type="text" id="identificacion" required name="user_identificacion" placeholder="tu # identificacion..">
                 </div> --}}
-                <div class="documento">
-                    <label for="identificacion">Número de documento</label>
-                    <input
-                      type="number"
-                      name="user_identificacion"
-                      id="identificacion"
-                      placeholder="Digite aquí su documento" required
-                    />
+                <div class="datos-usuario">
+                        <label for="identificacion">Número de documento</label>
+                        <input
+                          type="number"
+                          name="user_identificacion"
+                          id="identificacion"
+                          placeholder="Digite aquí su documento" required
+                        /> <br>
+                        <label for="nombre">Nombre</label>
+                        <input
+                          type="text"
+                          name="nombre"
+                          id="nombre"
+                          placeholder="Su Nombre" required
+                        />
                   </div>
                 @foreach ($preguntas as $pregunta)
                     <div class="pregunta">

@@ -186,7 +186,7 @@
 }
 
 /*# sourceMappingURL=style.css.map */
-.documento {
+.datos-usuario {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -195,12 +195,16 @@
     margin-bottom: 20px;
   }
 
-  .documento label {
+  .datos-usuario label {
     font-size: 2rem;
     font-weight: bold;
   }
-
-  .documento input {
+  .boton-enviar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .datos-usuario input {
     position: relative;
     width: 100%;
     max-width: 300px;
